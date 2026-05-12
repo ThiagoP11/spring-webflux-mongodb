@@ -18,7 +18,7 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 
-	@Transactional(readOnly = true)
+	/*@Transactional(readOnly = true)
 	public List<UserDTO> findAll() {
 		List<UserDTO> result = repository.findAll().stream().map(x -> new UserDTO(x)).toList();
 		return result;
@@ -64,5 +64,5 @@ public class UserService {
 	private void copyDtoToEntity(UserDTO dto, User entity) {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
-	}
+	}*/
 }
