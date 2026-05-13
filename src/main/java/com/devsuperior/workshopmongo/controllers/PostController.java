@@ -24,7 +24,7 @@ public class PostController {
 	@Autowired
 	private PostService service;
 
-	@GetMapping(value = "/{id}")
+	/*@GetMapping(value = "/{id}")
 	public ResponseEntity<PostDTO> findById(@PathVariable String id) {
 		PostDTO dto = service.findById(id);
 		return ResponseEntity.ok(dto);
@@ -49,5 +49,5 @@ public class PostController {
 		
 		List<PostDTO> list = service.fullSearch(text, min, max);
 		return ResponseEntity.ok(list);
-	}
+	}*/
 }
