@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Instant;
+
 @Service
 public class PostService {
 
@@ -24,13 +26,8 @@ public class PostService {
 		return repository.searchTitle(text).map(PostDTO::new);
 	}
 
-	/*
-	
-
-	
-	public List<PostDTO> fullSearch(String text, Instant minDate, Instant maxDate) {
+	public Flux<PostDTO> fullSearch(String text, Instant minDate, Instant maxDate) {
 		maxDate = maxDate.plusSeconds(86400); // 24 * 60 * 60
-		List<PostDTO> result = repository.fullSearch(text, minDate, maxDate).stream().map(x -> new PostDTO(x)).toList();
-		return result;
-	}*/
+		return repository.fullSearch(text, minDate, maxDate).map(PostDTO::new);
+	}
 }
