@@ -33,23 +33,12 @@ public class UserController {
 						.buildAndExpand(userDTO1.getId()).toUri()).body(userDTO1));
 	}
 
-	/*@GetMapping
-	public ResponseEntity<List<UserDTO>> findAll() {
-		List<UserDTO> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+	@PutMapping(value = "/{id}")
+	public Mono<ResponseEntity<UserDTO>> update(@PathVariable String id, @RequestBody UserDTO userDTO) {
+		return service.update(id, userDTO).map(userDTO1 ->  ResponseEntity.ok().body(userDTO1));
 	}
 
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
-		UserDTO dto = service.findById(id);
-		return ResponseEntity.ok(dto);
-	}
-	
-	@GetMapping(value = "/{id}/posts")
-	public ResponseEntity<List<PostDTO>> findPosts(@PathVariable String id) {
-		List<PostDTO> list = service.findPosts(id);
-		return ResponseEntity.ok().body(list);
-	}
+	/*
 
 	@PostMapping
 	public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto) {
